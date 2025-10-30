@@ -37,10 +37,12 @@
 <body>
     <div class="container">
         <p>Here is your quote for today:</p>
-        <img id="quoteImage" src="" alt="Daily Quote">
+        >         <img id="quoteImage" src="" alt="Daily Quote">
     </div>
+    >     <script>
+        // Your image list. This is perfect.
     const allQuoteImages = [
-    "images/1.png",
+        "images/1.png",
         "images/2.png",
         "images/3.png",
         "images/4.png",
@@ -71,7 +73,7 @@
         "images/29.png",
         "images/30.png"
     ];
- function getDayOfYear() {
+        function getDayOfYear() {
         const now = new Date();
         const start = new Date(now.getFullYear(), 0, 0);
         const diff = now - start;
@@ -80,9 +82,8 @@
     }
     const dayNumber = getDayOfYear();
     const numberOfQuotes = allQuoteImages.length;
-    const quoteIndex = (dayNumber - 1) % numberOfQuotes;
+    const quoteIndex = (dayNumber - 1) % numberOfQuotes; 
+    
     const imageElement = document.getElementById("quoteImage");
     imageElement.src = allQuoteImages[quoteIndex];
-  </script> 
-    
-</body> </html> ```
+</script> >
