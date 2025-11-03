@@ -37,53 +37,72 @@
 <body>
     <div class="container">
         <p>Here is your quote for today:</p>
-        >         <img id="quoteImage" src="" alt="Daily Quote">
+        <img id="quoteImage" src="" alt="Daily Quote">
     </div>
-    >     <script>
-        // Your image list. This is perfect.
-    const allQuoteImages = [
-        "images/1.png",
-        "images/2.png",
-        "images/3.png",
-        "images/4.png",
-        "images/5.png",
-        "images/6.png",
-        "images/7.png",
-        "images/8.png",
-        "images/9.png",
-        "images/10.png",
-        "images/11.png",
-        "images/12.png",
-        "images/13.png",
-        "images/14.png",
-        "images/15.png",
-        "images/16.png",
-        "images/17.png",
-        "images/18.png",
-        "images/19.png",
-        "images/20.png",
-        "images/21.png",
-        "images/22.png",
-        "images/23.png",
-        "images/24.png",
-        "images/25.png",
-        "images/26.png",
-        "images/27.png",
-        "images/28.png",
-        "images/29.png",
-        "images/30.png"
-    ];
-        function getDayOfYear() {
-        const now = new Date();
-        const start = new Date(now.getFullYear(), 0, 0);
-        const diff = now - start;
-        const oneDay = 1000 * 60 * 60 * 24;
-        return Math.floor(diff / oneDay);
-    }
-    const dayNumber = getDayOfYear();
-    const numberOfQuotes = allQuoteImages.length;
-    const quoteIndex = (dayNumber - 1) % numberOfQuotes; 
-    
-    const imageElement = document.getElementById("quoteImage");
-    imageElement.src = allQuoteImages[quoteIndex];
-</script> >
+
+    <script>
+        
+        // --- START EDITING HERE ---
+        // 1. Create your calendar of quotes
+        // The filenames are now just "1.png", "2.png", etc. (no folder)
+        
+        const quoteCalendar = {
+            
+            // This is your fallback image for all other days
+            "default": "default.png", 
+
+            // --- 30 DAY CALENDAR (Images 1-30) ---
+            "11-04": "1.png",
+            "11-05": "2.png",
+            "11-06": "3.png",
+            "11-07": "4.png",
+            "11-08": "5.png",
+            "11-09": "6.png",
+            "11-10": "7.png",
+            "11-11": "8.png",
+            "11-12": "9.png",
+            "11-13": "10.png",
+            "11-14": "11.png",
+            "11-15": "12.png",
+            "11-16": "13.png",
+            "11-17": "14.png",
+            "11-18": "15.png",
+            "11-19": "16.png",
+            "11-20": "17.png",
+            "11-21": "18.png",
+            "11-22": "19.png",
+            "11-23": "20.png",
+            "11-24": "21.png",
+            "11-25": "22.png",
+            "11-26": "23.png",
+            "11-27": "24.png",
+            "11-28": "25.png",
+            "11-29": "26.png",
+            "11-30": "27.png",
+            "12-01": "28.png",
+            "12-02": "29.png",
+            "12-03": "30.png" // No comma on the last one!
+        };
+        
+        // --- STOP EDITING HERE ---
+        // This code just works. No need to change it.
+        
+        function getTodaysKey() {
+            const now = new Date();
+            const month = String(now.getMonth() + 1).padStart(2, '0'); // 0-11 -> 01-12
+            const day = String(now.getDate()).padStart(2, '0');     // 1-31 -> 01-31
+            return `${month}-${day}`; // Format: "11-04"
+        }
+
+        const todayKey = getTodaysKey(); 
+
+        // It tries to find a quote for today. If it can't, it uses the "default" quote.
+        const imageFile = quoteCalendar[todayKey] || quoteCalendar["default"];
+
+        // This puts your chosen image onto the page
+        const imageElement = document.getElementById("quoteImage");
+        imageElement.src = imageFile;
+
+    </script> 
+</body>
+</html>
